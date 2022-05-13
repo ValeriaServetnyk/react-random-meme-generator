@@ -34,6 +34,7 @@ function App() {
   return (
     <div className="meme-template-selector">
       <form onSubmit={handleSubmit}>
+        <h3>Meme name</h3>
         <input
           name="memeName"
           placeholder="Add Meme Name"
@@ -42,16 +43,18 @@ function App() {
             setMemeName(event.currentTarget.value);
           }}
         />
+        <h3>Top Text</h3>
         <input
-          label="Top Text"
+          name="topText"
           placeholder="Add Top Text"
           value={topText}
           onChange={(event) => {
             setTopText(event.currentTarget.value);
           }}
         />
+        <h3>Bottom Text</h3>
         <input
-          label="Bottom Text"
+          name="bottomText"
           placeholder="Add Bottom Text"
           value={bottomText}
           onChange={(event) => {
