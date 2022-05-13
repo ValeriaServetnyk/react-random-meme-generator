@@ -43,7 +43,7 @@ function App() {
             setMemeName(event.currentTarget.value);
           }}
         />
-        <h3>Top Text</h3>
+        <h3>Top text</h3>
         <input
           name="topText"
           placeholder="Add Top Text"
@@ -52,7 +52,7 @@ function App() {
             setTopText(event.currentTarget.value);
           }}
         />
-        <h3>Bottom Text</h3>
+        <h3>Bottom text</h3>
         <input
           name="bottomText"
           placeholder="Add Bottom Text"
