@@ -34,33 +34,39 @@ function App() {
   return (
     <div className="meme-template-selector">
       <form onSubmit={handleSubmit}>
-        <h3>Meme name</h3>
-        <input
-          name="memeName"
-          placeholder="Add Meme Name"
-          value={memeName}
-          onChange={(event) => {
-            setMemeName(event.currentTarget.value);
-          }}
-        />
-        <h3>Top text</h3>
-        <input
-          name="topText"
-          placeholder="Add Top Text"
-          value={topText}
-          onChange={(event) => {
-            setTopText(event.currentTarget.value);
-          }}
-        />
-        <h3>Bottom text</h3>
-        <input
-          name="bottomText"
-          placeholder="Add Bottom Text"
-          value={bottomText}
-          onChange={(event) => {
-            setBottomText(event.currentTarget.value);
-          }}
-        />
+        <label>
+          Meme name
+          <input
+            name="memeName"
+            placeholder="Add Meme Name"
+            value={memeName}
+            onChange={(event) => {
+              setMemeName(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <label>
+          Top text
+          <input
+            name="topText"
+            placeholder="Add Top Text"
+            value={topText}
+            onChange={(event) => {
+              setTopText(event.currentTarget.value);
+            }}
+          />
+        </label>
+        <label>
+          Bottom text
+          <input
+            name="bottomText"
+            placeholder="Add Bottom Text"
+            value={bottomText}
+            onChange={(event) => {
+              setBottomText(event.currentTarget.value);
+            }}
+          />
+        </label>
       </form>
 
       <div className="Buttons">
