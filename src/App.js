@@ -2,161 +2,6 @@ import './App.css';
 import { saveAs } from 'file-saver';
 import React, { useState } from 'react';
 
-// import { Meme } from './Meme.js';
-
-// const objectToQueryParameter = (obj) => {
-//   const links = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
-//   return '?' + links.join('&');
-// };
-
-// function App() {
-//   const [templates, setTemplates] = useState([]);
-//   const [template, setTemplate] = useState(null);
-//   const [topText, setTopText] = useState('');
-//   const [bottomText, setBottomText] = useState('');
-//   const [meme, setMeme] = useState(null);
-
-//   useEffect(() => {
-//     fetch('https://api.memegen.link/templates/').then((x) =>
-//       x.json().then((response) => setTemplates(response.id.name)),
-//     );
-//   }, []);
-
-//   if (meme) {
-//     return (
-//       <div>
-//         <img src={meme} alt="custom meme" />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div style={{ textAlight: 'center' }}>
-//       {template && (
-//         <form
-//           onSubmit={async (e) => {
-//             e.preventDefault();
-//             const parameters = {
-//               templateName: template.name,
-//               text1: topText,
-//               text2: bottomText,
-//             };
-//             const response = await fetch(
-//               `https://api.memegen.link/templates/${objectToQueryParameter(
-//                 parameters,
-//               )}`,
-//             );
-//             const json = await response.json();
-//             setMeme(json.data.url);
-//           }}
-//         >
-//           <Meme template={template} />
-//           <input
-//             placeholder="top text"
-//             value={topText}
-//             onChange={(e) => setTopText(e.target.value)}
-//           />
-//           <input
-//             placeholder="bottom text"
-//             value={bottomText}
-//             onChange={(e) => setBottomText(e.target.value)}
-//           />
-//           <button>create meme</button>
-//         </form>
-//       )}
-//       {!template && (
-//         <>
-//           <h1>Pick a template</h1>
-//           {templates.map((template) => {
-//             return (
-//               <Meme
-//                 template={template}
-//                 onClick={() => {
-//                   setTemplate(template);
-//                 }}
-//               />
-//             );
-//           })}
-//         </>
-//       )}
-//     </div>
-//   );
-// }
-
-// Last working v
-// function App() {
-//   const [inputText, setInputText] = useState({
-//     topText: '',
-//     bottomText: '',
-//     memeName: '',
-//   });
-
-//   const [memeName, setMemeName] = useState();
-//   // const [template, setTemplate] = useState([]);
-
-//   const [randomImage, setRandomImage] = useState(
-//     `https://api.memegen.link/images/${memeName}.gif`,
-//   );
-
-//   const [allMemeImgs, setAllMemeImgs] = useState([]);
-
-//   const handleChange = (e) => {
-//     setInputText({
-//       ...inputText,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const randNum = Math.floor(Math.random() * allMemeImgs.len);
-//     const randMemeImgUrl = allMemeImgs[randNum].url;
-//     setRandomImage(randMemeImgUrl);
-//   };
-
-//   useEffect(() => {
-//     fetch('https://api.memegen.link/images')
-//       .then((response) => response.json())
-//       .then((response) => setAllMemeImgs(response.id.url))
-//       .catch(() => {
-//         'return error';
-//       });
-//   });
-//   return (
-//     <div className="meme-container">
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           name="memeName"
-//           placeholder="Add Meme Name"
-//           value={inputText.memeName}
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="topText"
-//           placeholder="Add Top Text"
-//           value={inputText.topText}
-//           onChange={handleChange}
-//         />
-//         <input
-//           name="bottomText"
-//           placeholder="Add Bottom Text"
-//           value={inputText.bottomText}
-//           onChange={handleChange}
-//         />
-//       </form>
-//       <button>Generate</button>
-//       <div className="meme">
-//         <img src={randomImage} alt="" />
-//         {/* data-test-id="meme-image" */}
-//         <h2 className="top"> {inputText.topText}</h2>
-//         <h2 className="bottom"> {inputText.bottomText}</h2>
-//         <h2 className="name"> {inputText.memeName}</h2>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
@@ -167,6 +12,8 @@ function App() {
   function memeDownload() {
     saveAs(template, 'meme.png');
   }
+
+  // make sure that the link doesn`t break when there is an input missing
 
   if (topText && bottomText) {
     template = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
@@ -181,6 +28,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  // pick the name and top, bottom texts placeholders
 
   return (
     <div className="meme-template-selector">
@@ -238,5 +87,6 @@ function App() {
     </div>
   );
 }
+// setup reset button and download button
 
 export default App;
