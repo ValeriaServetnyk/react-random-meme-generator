@@ -43,7 +43,7 @@ function App() {
           }}
         />
         <input
-          name="topText"
+          label="Top Text"
           placeholder="Add Top Text"
           value={topText}
           onChange={(event) => {
@@ -51,7 +51,7 @@ function App() {
           }}
         />
         <input
-          name="bottomText"
+          label="Bottom Text"
           placeholder="Add Bottom Text"
           value={bottomText}
           onChange={(event) => {
