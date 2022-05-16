@@ -34,6 +34,7 @@ function App() {
   return (
     <div className="meme-template-selector">
       <form onSubmit={handleSubmit}>
+        <br />
         <label>
           Meme template
           <input
@@ -45,6 +46,7 @@ function App() {
             }}
           />
         </label>
+        <br />
         <label>
           Top text
           <input
@@ -56,6 +58,7 @@ function App() {
             }}
           />
         </label>
+        <br />
         <label>
           Bottom text
           <input
