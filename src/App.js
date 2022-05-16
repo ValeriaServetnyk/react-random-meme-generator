@@ -1,29 +1,38 @@
 import './App.css';
 import { saveAs } from 'file-saver';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [memeName, setMemeName] = useState('');
-
-  let template;
+  const [customerTemplate, setCustomerTemplate] = useState('');
+  const [image, setImage] = useState(
+    `https://api.memegen.link/images/${customerTemplate}/${topText}/${bottomText}.png`,
+  );
 
   function memeDownload() {
-    saveAs(template, 'meme.png');
+    saveAs(image, 'meme.png');
   }
+
+  useEffect(() => {
+    setImage(
+      `https://api.memegen.link/images/${
+        customerTemplate ? customerTemplate : 'ants'
+      }/${topText ? topText : '_'}/${bottomText ? bottomText : ''}.png`,
+    );
+  }, [topText, bottomText, customerTemplate]);
 
   // make sure that the link doesn`t break when there is an input missing
 
-  if (topText && bottomText) {
-    template = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
-  } else if (topText) {
-    template = `https://api.memegen.link/images/${memeName}/${topText}.png`;
-  } else if (bottomText) {
-    template = `https://api.memegen.link/images/${memeName}/${bottomText}.png`;
-  } else {
-    template = 'https://api.memegen.link/images/ants.png';
-  }
+  // if (topText && bottomText) {
+  //   template = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
+  // } else if (topText) {
+  //   template = `https://api.memegen.link/images/${memeName}/${topText}.png`;
+  // } else if (bottomText) {
+  //   template = `https://api.memegen.link/images/${memeName}/${bottomText}.png`;
+  // } else {
+  //   template = 'https://api.memegen.link/images/ants.png';
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,9 +49,9 @@ function App() {
           <input
             name="memeName"
             placeholder="Add Meme Name"
-            value={memeName}
+            value={customerTemplate}
             onChange={(event) => {
-              setMemeName(event.currentTarget.value);
+              setCustomerTemplate(event.currentTarget.value);
             }}
           />
         </label>
@@ -76,7 +85,7 @@ function App() {
         <h1> Update meme template</h1>
         <button
           onClick={() => {
-            setMemeName('');
+            setCustomerTemplate('');
             setTopText('');
             setBottomText('');
           }}
@@ -94,7 +103,7 @@ function App() {
       </div>
 
       <div className="meme">
-        <img src={template} alt="meme" data-test-id="meme-image" />
+        <img src={image} alt="meme" data-test-id="meme-image" />
       </div>
     </div>
   );
