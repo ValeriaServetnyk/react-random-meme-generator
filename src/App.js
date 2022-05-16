@@ -35,7 +35,7 @@ function App() {
     <div className="meme-template-selector">
       <form onSubmit={handleSubmit}>
         <label>
-          Meme name
+          Meme template
           <input
             name="memeName"
             placeholder="Add Meme Name"
