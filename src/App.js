@@ -1,6 +1,6 @@
 import './App.css';
 import { saveAs } from 'file-saver';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [topText, setTopText] = useState('');
@@ -21,18 +21,6 @@ function App() {
       }/${topText ? topText : '_'}/${bottomText ? bottomText : ''}.png`,
     );
   }, [topText, bottomText, customerTemplate]);
-
-  // make sure that the link doesn`t break when there is an input missing
-
-  // if (topText && bottomText) {
-  //   template = `https://api.memegen.link/images/${memeName}/${topText}/${bottomText}.png`;
-  // } else if (topText) {
-  //   template = `https://api.memegen.link/images/${memeName}/${topText}.png`;
-  // } else if (bottomText) {
-  //   template = `https://api.memegen.link/images/${memeName}/${bottomText}.png`;
-  // } else {
-  //   template = 'https://api.memegen.link/images/ants.png';
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
